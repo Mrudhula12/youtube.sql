@@ -1,0 +1,11 @@
+SELECT
+  DISTINCT(channel.channel_id),
+  channel.name AS channel_name
+FROM
+  video
+  INNER JOIN channel ON channel.channel_id = video.channel_id
+WHERE
+  cast(strftime("%Y", published_datetime) AS int) < 2016
+  AND video.name LIKE "%music%"
+ORDER BY
+  channel_name ASC;
