@@ -1,0 +1,17 @@
+SELECT
+  name,
+  gender,
+  age,
+  country,
+  premium_membership
+FROM
+  user
+  INNER JOIN user_likes ON user.user_id = user_likes.user_id
+WHERE
+  user.age < 30
+  AND user.country = "INDIA"
+  AND user_likes.reaction_type = "LIKE"
+  AND user_likes.video_id = 1011
+  AND cast(strftime("%Y", user_likes.reacted_at) AS int) = 2020
+ORDER BY
+  user.name ASC;
