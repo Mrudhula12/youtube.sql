@@ -1,0 +1,12 @@
+SELECT
+  name,
+  no_of_views,
+  cast(strftime("%Y", published_datetime) AS int) AS year
+FROM
+  video
+WHERE
+  year < 2016
+  AND name LIKE "%music%"
+ORDER BY
+  year DESC,
+  name ASC;
